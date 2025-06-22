@@ -16,16 +16,16 @@ Example
 Login with your username and password:
 
 	>>> from islendingabok import IslendingabokAPI
-	>>> api = IslendingabokAPI(username, password)
-	>>> user_info = api.me()
-	>>> print user_info['name']
+        >>> api = IslendingabokAPI(username, password)
+        >>> user_info = api.me()
+        >>> print(user_info['name'])
 	Ólafur Ragnar Grímsson
 
 Obtain search results by name and look at the results:
 
 	>>> results = api.find(u'Vigdís Finnbogadóttir')
-	>>> for person_info in results:
-	...     print person_info['name'], person_info['dob'], person_info['id']
+        >>> for person_info in results:
+        ...     print(person_info['name'], person_info['dob'], person_info['id'])
 	... 
 	Vigdís Finnbogadóttir 19300415 11183155
 	Vigdís Finnbogadóttir 19830617 10331225
@@ -34,11 +34,11 @@ Obtain search results by name and look at the results:
 
 Make your search more detailed:
 
-	>>> oli_stef = api.find(u'Ólafur Indriði Stefánsson', 1973, 07)
+        >>> oli_stef = api.find(u'Ólafur Indriði Stefánsson', 1973, 7)
 	>>> oli_stef_id = oli_stef[0]["id"]
 	>>> siblings_of_oli_stef = api.siblings(oli_stef_id)
-	>>> for sibling in siblings_of_oli_stef:
-	...     print sibling["name"]
+        >>> for sibling in siblings_of_oli_stef:
+        ...     print(sibling["name"])
 	... 
 	Guðrún Lilja Tryggvadóttir
 	Agnar Björn Tryggvason
