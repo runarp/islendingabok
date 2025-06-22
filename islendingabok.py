@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 from urllib.parse import urlencode
+import os
 import requests
 
 
@@ -16,9 +17,14 @@ class ClientError(Exception):
 class IslendingabokAPI(object):
     API_PATH = "http://www.islendingabok.is/ib_app/"
 
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
+    def __init__(self, username=None, password=None):
+        self.username = username or os.getenv("ISL_USER")
+        self.password = password or os.getenv("ISL_PASSWORD")
+
+        if not self.username or not self.password:
+            raise ClientError(
+                "Missing credentials. Provide username and password as arguments or via ISL_USER and ISL_PASSWORD environment variables."
+            )
         
         self.session = requests.Session()
         self.session_id = None

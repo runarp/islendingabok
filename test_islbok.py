@@ -3,6 +3,7 @@
 
 from islendingabok import IslendingabokAPI
 import argparse
+import os
 
 
 def main(username, password):
@@ -28,10 +29,10 @@ def main(username, password):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Connects to Islendingabok and accesses user data.')
-    parser.add_argument('username',
-        help='username on Islendingabok')
-    parser.add_argument('password',
-        help='password on Islendingabok')
+    parser.add_argument('--username', default=os.getenv('ISL_USER'),
+        help='username on Islendingabok (defaults to ISL_USER env variable)')
+    parser.add_argument('--password', default=os.getenv('ISL_PASSWORD'),
+        help='password on Islendingabok (defaults to ISL_PASSWORD env variable)')
 
     return parser.parse_args()
 
