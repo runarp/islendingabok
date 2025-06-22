@@ -13,10 +13,10 @@ Note that when name is specified in 'find' then search can be further defined st
 Example
 -------
 
-Login with your username and password:
+Login with your username and password or via environment variables `ISL_USER` and `ISL_PASSWORD`:
 
-	>>> from islendingabok import IslendingabokAPI
-        >>> api = IslendingabokAPI(username, password)
+        >>> from islendingabok import IslendingabokAPI
+        >>> api = IslendingabokAPI()  # or IslendingabokAPI(username, password)
         >>> user_info = api.me()
         >>> print(user_info['name'])
 	Ólafur Ragnar Grímsson
